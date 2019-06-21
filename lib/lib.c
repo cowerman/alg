@@ -22,8 +22,6 @@ int swap(int *a, int *b)
 
 int gen_seq(int *seq, int len)
 {
-	int ret;
-
 	srandom(time(NULL));
 
 	for (int i = 0; i < len; i++) {
@@ -33,7 +31,7 @@ int gen_seq(int *seq, int len)
 	return 0;
 }
 
-void output(int *seq, int len)
+void print_seq(int *seq, int len)
 {
 	for (int i = 0; i < len; i++) {
 		printf(" %d",seq[i]);

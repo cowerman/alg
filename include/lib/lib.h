@@ -7,4 +7,4 @@
 
 int swap(int *seq, int *next_seq);
 int gen_seq(int *seq, int len);
-void output(int *seq, int len);
+void print_seq(int *seq, int len);
