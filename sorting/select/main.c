@@ -18,12 +18,12 @@ int main(void)
 
 	// generate seq number
 	gen_seq(ar, len);
-	output(ar, len);
+	print_seq(ar, len);
 
 	// sort the seq number
 	sel_sort(ar, len);
 
 	// after sort the seq number
-	output(ar, len);
+	print_seq(ar, len);
 	return 0;
 }
