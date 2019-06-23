@@ -12,11 +12,14 @@ C_INCLUDE_PATH = -Iinclude/
 C_INCLUDE_PATH += -Iinclude/lib/
 
 SRCS_LIB += lib/lib.c
+SRCS_ALG += sorting/select/sel.c
+SRCS_ALG += sorting/insert/insert.c
 
-SRCS_C += sorting/select/sel.c
-SRCS_C += sorting/select/main.c
 
-SRCS = $(SRCS_LIB) $(SRCS_C)
+#SRCS_C += sorting/select/main.c
+SRCS_C += sorting/insert/main.c
+
+SRCS = $(SRCS_LIB) $(SRCS_C) $(SRCS_ALG)
 OBJS = $(patsubst %.c, $(OUT)/%.o, $(SRCS))
 
 .PHONY:
