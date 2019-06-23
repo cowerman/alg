@@ -5,8 +5,6 @@
     > Created Time: 2019年06月21日 星期五 14时02分42秒
  ************************************************************************/
 #include <stdio.h>
-#include <time.h>
-#include <stdlib.h>
 #include "alg.h"
 #include "lib.h"
 
@@ -27,7 +25,7 @@ void sel_sort(int *seq, int len)
 
 		// debug: after setep sort
 		//printf("After step %d sort:\n", i);
-		//output(seq,len);
+		//print_seq(seq,len);
 	}
 
 	return;
