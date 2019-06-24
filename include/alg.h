@@ -7,3 +7,4 @@
 
 void sel_sort(int *, int);
 void insert_sort(int *, int);
+void bubble_sort(int *, int);
