@@ -1,24 +1,24 @@
 /*************************************************************************
-    > File Name: insert.c
+    > File Name: bubble.c
     > Author:
     > Mail:
-    > Created Time: Sat 22 Jun 2019 09:54:38 PM CST
+    > Created Time: Mon 24 Jun 2019 10:55:40 PM CST
  ************************************************************************/
+
 #include <stdio.h>
 #include "alg.h"
 #include "lib.h"
 
-void insert_sort(int *seq, int len)
+void bubble_sort(int* seq, int len)
 {
-	int j;
+	int i,j;
 
-	for (int i = 1; i < len; i++) {
-		int cur_min = seq[i];
-		for (j = i - 1; j >= 0 && seq[j] > cur_min; j--) {
-			seq[j + 1] = seq[j];
+	for (i = 0; i < len - 1; i++) {
+		for (j = len - 1; j > 0; j--) {
+			if (seq[j] < seq[j - 1]) {
+				swap(&seq[j], &seq[j - 1]);
+			}
 		}
-
-		seq[j + 1] = cur_min;
 
 		// debug
 		//printf("The step %d sorting:\n", i);
