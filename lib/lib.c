@@ -1,7 +1,7 @@
 /*************************************************************************
     > File Name: lib.c
-    > Author:		
-    > Mail:		
+    > Author:
+    > Mail:
     > Created Time: 2019年06月21日 星期五 15时32分18秒
  ************************************************************************/
 
@@ -20,7 +20,7 @@ int swap(int *a, int *b)
 	return 0;
 }
 
-int gen_seq(int *seq, int len)
+int gen_random_arr(int *seq, int len)
 {
 	srandom(time(NULL));
 

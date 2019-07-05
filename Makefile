@@ -25,7 +25,7 @@ SRCS = $(SRCS_LIB) $(SRCS_C) $(SRCS_ALG)
 OBJS = $(patsubst %.c, $(OUT)/%.o, $(SRCS))
 
 .PHONY:
-all: $(OUT)/$(TARGET)
+all: clean $(OUT)/$(TARGET)
 
 .PHONY:
 $(OUT)/$(TARGET): $(OBJS)
