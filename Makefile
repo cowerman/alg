@@ -3,7 +3,7 @@ OUT := $(DIR)/out
 
 TARGET := excute
 
-CFLAGS += -Wall -g
+CFLAGS += -Werror -fstack-protector -g
 LDFLAGS += 
 
 CC := gcc

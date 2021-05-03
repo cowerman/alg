@@ -20,10 +20,11 @@ int swap(int *a, int *b)
 	return 0;
 }
 
-int gen_random_arr(int *seq, int len)
+int gen_random_arry(int *seq, int len)
 {
 	srandom(time(NULL));
 
+	/* generate random number in 0 ~ 100 */
 	for (int i = 0; i < len; i++) {
 		seq[i] = random() % 100;
 	}
@@ -31,7 +32,7 @@ int gen_random_arr(int *seq, int len)
 	return 0;
 }
 
-void print_seq(int *seq, int len)
+void print_int_arry(int *seq, int len)
 {
 	for (int i = 0; i < len; i++) {
 		printf(" %d",seq[i]);

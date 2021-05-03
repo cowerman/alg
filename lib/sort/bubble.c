@@ -22,7 +22,7 @@ void bubble_sort(int* seq, int len)
 
 		// debug
 		//printf("The step %d sorting:\n", i);
-		//print_seq(seq, len);
+		//print_int_arry(seq, len);
 	}
 
 	return ;

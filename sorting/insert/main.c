@@ -17,15 +17,15 @@ int main(void)
 	int len = sizeof(ar) / sizeof(ar[0]);
 
 	// generate seq number
-	gen_random_arr(ar, len);
+	gen_random_arry(ar, len);
 
 	// before sorting
-	print_seq(ar, len);
+	print_int_arry(ar, len);
 
 	// insert sort
 	insert_sort(ar, len);
 
 	// after sorting
-	print_seq(ar, len);
+	print_int_arry(ar, len);
 	return 0;
 }

@@ -6,5 +6,5 @@
  ************************************************************************/
 
 int swap(int *seq, int *next_seq);
-int gen_random_arr(int *seq, int len);
-void print_seq(int *seq, int len);
+int gen_random_arry(int *seq, int len);
+void print_int_arry(int *seq, int len);

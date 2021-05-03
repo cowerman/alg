@@ -17,13 +17,13 @@ int main(void)
 	int len = sizeof(ar) / sizeof(ar[0]);
 
 	// generate seq number
-	gen_random_arr(ar, len);
-	print_seq(ar, len);
+	gen_random_arry(ar, len);
+	print_int_arry(ar, len);
 
 	// sort the seq number
 	bubble_sort(ar, len);
 
 	// after sort the seq number
-	print_seq(ar, len);
+	print_int_arry(ar, len);
 	return 0;
 }
