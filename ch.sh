@@ -10,7 +10,7 @@
 #	gcc *.c -o ${a:0:3}
 #	./${a:0:3}
 #fi
-if [ "$1"x == "r"x ];then
+if [ "$1"x == "all"x ];then
 	make clean
 	echo ""
 	echo -e "\033[34m\t\tGenerate excute program:\033[0m"

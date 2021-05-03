@@ -25,7 +25,7 @@ void sel_sort(int *seq, int len)
 
 		// debug: after setep sort
 		//printf("After step %d sort:\n", i);
-		//print_seq(seq,len);
+		//print_int_arry(seq,len);
 	}
 
 	return;
