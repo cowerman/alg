@@ -1,61 +1,57 @@
-/*************************************************************************
-    > File Name: ../lib/struct/array.c
-    > Author:
-    > Mail:
-    > Created Time: 2019年07月08日 星期一 13时22分19秒
- ************************************************************************/
-
 #include <stdio.h>
 #include "lib.h"
 #include "array.h"
 
-int array_insert(int *data, int idx, int len, int *array)
-{
-	int ret = 0,local_idx, i = 1;
-
-	local_idx = idx;
-
-	if (len < idx) {
-		ret = -1;
-		printf("Error: idx should not be larger then arrary length!\n");
-		return ret;
-	}
-
-	while (i <= len - idx) {
-		array[len - i] = array[len - i - 1];
-		i ++;
-	}
-
-	array[local_idx - 1] = *data;
-
-	return ret;
-}
-
-int array_del_idx(int idx, int len, int *array)
+int array_insert(int *data, int idx, struct data *ar)
 {
 	int ret = 0, i = 0;
 
-	if (len < idx) {
+	if (ARRAY_LEN < idx || idx <= 0) {
 		ret = -1;
-		printf("Error: idx should not be larger than idx!\n");
+		printf("Error: idx should not greater then %d and idx > 0!\n", ARRAY_LEN);
+		return ret;
+	}
+	if (ar->len >= ARRAY_LEN) {
+		printf("Error: The array is full!\n");
+		ret = -1;
 		return ret;
 	}
 
-	while (i <= len - idx) {
-		array[idx - 1 + i] = array[idx + i];
+	ar->len += 1;
+	while (i <= (ar->len - idx - 1)) {
+		ar->random_num[(ar->len - 1) - i] = ar->random_num[(ar->len - 1) - i - 1];
 		i ++;
 	}
 
-	array[len - 1] = 0;
+	ar->random_num[idx - 1] = *data;
 	return ret;
 }
 
-int array_find(int *data, int len, int *array)
+int array_del_idx(int idx, struct data *ar)
+{
+	int ret = 0, i = 0;
+
+	if (ar->len == 0) {
+		ret = -1;
+		printf("Error: the arrary is empty, don't support delete!\n");
+		return ret;
+	}
+
+	ar->len -= 1;
+	while (i <= ar->len - idx) {
+		ar->random_num[idx - 1 + i] = ar->random_num[idx + i];
+		i ++;
+	}
+
+	return ret;
+}
+
+int array_find(int *data, struct data ar)
 {
 	int i, ret = -1;
 
-	for (i = 0; i < len; i ++) {
-		if (array[i] == *data) {
+	for (i = 0; i < ar.len; i ++) {
+		if (ar.random_num[i] == *data) {
 			return i;
 		}
 	}
@@ -63,20 +59,25 @@ int array_find(int *data, int len, int *array)
 	return ret;
 }
 
-int array_del_ctx(int *data, int len, int *array)
+int array_del_ctx(int *data, struct data *ar)
 {
 	int ret = 0, idx = 0;
 	int i = 0;
 
-	idx = array_find(data, len, array);
+	if (ar->len == 0) {
+		ret = -1;
+		printf("Error: the arrary is empty, don't support delete!\n");
+		return ret;
+	}
+	idx = array_find(data, *ar);
 
+	ar->len -= 1;
 	if (idx != -1) {
-		while (i <= len - idx) {
-			array[idx + i] = array[idx + i + 1];
+		while (i <= ar->len - idx) {
+			ar->random_num[idx + i] = ar->random_num[idx + i + 1];
 			i ++;
 		}
 	
-		array[len - 1] = 0;
 	} else {
 		ret = -1;
 	}

@@ -32,7 +32,7 @@ SRCS_DATA_STRUCT += lib/struct/array.c
 #SRCS_C += sorting/insert/main.c
 #SRCS_C += sorting/bubble/main.c
 
-SRCS_C += data_struct/main_array.c
+SRCS_C += data_struct/linear_table/main_array.c
 
 SRCS = $(SRCS_LIB) $(SRCS_C) $(SRCS_SORT) $(SRCS_DATA_STRUCT)
 OBJS = $(patsubst %.c, $(OUT)/%.o, $(SRCS))
