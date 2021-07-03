@@ -32,6 +32,17 @@ int gen_random_arry(int *seq, int len)
 	return 0;
 }
 
+int gen_random_num()
+{
+	int num;
+	srandom(time(NULL));
+
+	/* generate random number in 0 ~ 100 */
+	num = random() % 100;
+
+	return num;
+}
+
 void print_int_arry(int *seq, int len)
 {
 	for (int i = 0; i < len; i++) {
