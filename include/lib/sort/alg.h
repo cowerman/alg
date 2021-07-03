@@ -1,10 +1,7 @@
-/*************************************************************************
-    > File Name: alg.h
-    > Author:
-    > Mail:
-    > Created Time: 2019年06月21日 星期五 15时35分31秒
- ************************************************************************/
-
+#ifndef ALG_H
+#define ALG_H
 void sel_sort(int *, int);
 void insert_sort(int *, int);
 void bubble_sort(int *, int);
+
+#endif
