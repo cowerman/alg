@@ -1,5 +1,6 @@
 #ifndef LIST_H
 #define LIST_H
+#include "lib.h"
 
 typedef struct slist {
 	int data;
@@ -8,8 +9,8 @@ typedef struct slist {
 } List, *Plist;
 
 
-int destory_list(Plist L, int n);
-int insert_list(Plist L, int i, List node);
-int init_list(Plist L, int n);
+int destory_list(Plist *L);
+int insert_list(Plist L, int i, Plist pnode);
+int init_list(Plist *L, int n);
 int print_slist(Plist L);
 #endif
