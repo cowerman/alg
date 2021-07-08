@@ -11,6 +11,9 @@ typedef struct slist {
 
 int destory_list(Plist *L);
 int insert_list(Plist L, int i, Plist pnode);
+int add_tail(Plist L, Plist pnode);
 int init_list(Plist *L, int n);
 int print_slist(Plist L);
+int rem_list(Plist L, int i);
+int init_list_tail(Plist *L, int n);
 #endif
