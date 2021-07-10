@@ -27,37 +27,40 @@ int alloc_frame(Plist frame)
 		return -1;
 	} else {
 		frame_number = *data;
-		free(data);
+		/* command this: if the data use malloc, it should use free */
+		//free(data);
 	}
 
 	return frame_number;
 }
 
-int free_frame(Plist frame, int frame_number)
+int free_frame(Plist frame, int *frame_number)
 {
-	int *data;
+	int *data = frame_number;
 	
-	data = (int *)malloc(sizeof(int));
-	if (!data) {
-		printf("No enough memory space for page frame number to insert!\n");
-		return -1;
-	}
+	//data = (int *)malloc(sizeof(int));
+	//if (!data) {
+	//	printf("No enough memory space for page frame number to insert!\n");
+	//	return -1;
+	//}
 
-	*data = frame_number;
+	data = frame_number;
+	printf("free number:0x%x, data:%p\n", *frame_number, data);
 
-	/* fee(insert) a frame number to free page frame list head */
+	/* free(insert) a frame number to free page frame list head */
 	if (list_ins_next(frame, NULL, data) != 0) {
 		printf("No enough memory space for free page frame list!\n");
 		return -1;
 	}
 
+	//free(data);
 	return 0;
 }
 
 void destory_frame(void *data)
 {
-	/* alloc_frame used free() to free page frame head pointer */
-	free(data);
+	/* use free() to free the list which alloced in create_frame */
+	//free(data);
 }
 
 int create_frame(Plist *L, int n)
@@ -74,9 +77,16 @@ int create_frame(Plist *L, int n)
 
 	for (j = 0; j < n; j ++) {
 		/* Insert the (&j + i) to simluate page frame number */
-		data = &j + j;
+		data = (unsigned int *)malloc(sizeof(unsigned int));
+		if (!data) {
+			printf("No space!\n");
+			exit(-1);
+		}
+		*data = j;
+		printf("The added meta data:%p\n", data);
 		if (list_ins_next(*L, NULL, data) != 0) {
 			printf("Free %d page frame add to page frame list, hit no space!\n", j);
+			destory_page_frame_list(L);
 			exit(-1);
 		}
 	}
@@ -90,18 +100,22 @@ int main (int argc, char *argv[])
 	int n = 5, ret, page_frame;
 	Plist L;
 
+	printf("-----create free page frame list-------\n");
 	ret = create_frame(&L, n);
 	print_list(L);
 
-#if 0
-	ret = alloc_frame(L);
+	printf("-----alloc frame number from free page frame list-------\n");
+	page_frame = alloc_frame(L);
+	printf("Get the page frame number:%d\n", page_frame);
 	print_list(L);
 
-	ret = free_frame(L, page_frame);
+	printf("-----free page frame number:%d to list-------\n", page_frame);
+	ret = free_frame(L, &page_frame);
 	print_list(L);
 
+	printf("-----destory free page frame list-------\n");
 	destory_page_frame_list(&L);
 	free(L);
-#endif
+
 	return ret;
 }

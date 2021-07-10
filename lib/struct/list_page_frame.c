@@ -66,7 +66,7 @@ int list_ins_next(Plist L, Pnode pnode, const void *data)
  *	-<em>-1</em> fail
  *	-<em>0</em> success
  * */
-int list_rem_next(Plist L, Pnode pnode, const void **data)
+int list_rem_next(Plist L, Pnode pnode, void **data)
 {
 
 	Pnode old_pnode;
@@ -99,6 +99,11 @@ int list_rem_next(Plist L, Pnode pnode, const void **data)
 		}
 	}
 
+	/* It would failed, when alloc_frame pass address, it cant be freed
+	 * Otherwise, it would be cause leak (sizeof(unsigned int)) * number which passed to crate frame
+	 * TODO: fix the leakage */
+	//free(old_pnode->data);
+	printf("free pnode:%p, data:pnode->data:%p\n", old_pnode, old_pnode->data);
 	free(old_pnode);
 	L->list_len--;
 
@@ -127,11 +132,11 @@ int print_list(Plist L)
 		return 0;
 	}
 
-	Pnode m = list_head(L)->next;
+	Pnode m = list_head(L);
 
 	printf("List Length:%d\n", L->list_len);
 	while (m) {
-		printf("data:0x%p->", (int *)m->data);
+		printf("data:0x%p(0x%x)->", (int *)m->data, *(int *)m->data);
 		m = m->next;
 	}
 	printf("NULL\n");

@@ -27,7 +27,7 @@ typedef struct slist {
 void init_page_frame_list(Plist *L, void (*destory)(void *data));
 void destory_page_frame_list(Plist *L);
 int list_ins_next(Plist L, Pnode pnode, const void *data);
-int list_rem_next(Plist L, Pnode pnode, const void **data);
+int list_rem_next(Plist L, Pnode pnode, void **data);
 int print_list(Plist L);
 
 #endif
