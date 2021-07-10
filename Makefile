@@ -20,6 +20,7 @@ SRCS_SORT += lib/sort/bubble.c
 
 SRCS_DATA_STRUCT += lib/struct/array.c
 SRCS_DATA_STRUCT += lib/struct/list.c
+SRCS_DATA_STRUCT += lib/struct/list_page_frame.c
 #SRCS_DATA_STRUCT += lib/struct/bitmap.c
 #SRCS_DATA_STRUCT += lib/struct/ring_buf.c
 #SRCS_DATA_STRUCT += lib/struct/queue.c
@@ -33,7 +34,8 @@ SRCS_DATA_STRUCT += lib/struct/list.c
 #SRCS_C += sorting/bubble/main.c
 
 #SRCS_C += data_struct/linear_table/main_array.c
-SRCS_C += data_struct/list/list_main.c
+#SRCS_C += data_struct/list/list_main.c
+SRCS_C += data_struct/list/page_frame_main.c
 
 SRCS = $(SRCS_LIB) $(SRCS_C) $(SRCS_SORT) $(SRCS_DATA_STRUCT)
 OBJS = $(patsubst %.c, $(OUT)/%.o, $(SRCS))
